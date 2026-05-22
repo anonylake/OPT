@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prince-optical-electrical-rerank"
+version = "0.1.0"
+description = "Little Prince optical-electrical rerank subproject with LLM candidate preselection"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+  "tqdm",
+  "gensim",
+  "scikit-learn",
+  "pillow",
+  "torch",
+  "transformers",
+  "sentencepiece",
+]
+
+[project.scripts]
+run-pipeline = "core.pipeline:main"
+
+[tool.setuptools]
+packages = ["core"]

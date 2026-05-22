@@ -1,0 +1,8 @@
+numpy
+tqdm
+gensim
+scikit-learn
+pillow
+torch
+transformers
+sentencepiece

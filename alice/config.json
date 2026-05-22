@@ -1,0 +1,65 @@
+{
+  "runtime": {
+    "reuse_cache": true,
+    "hf_endpoint": "https://hf-mirror.com",
+    "unset_ssl_env": true
+  },
+  "data": {
+    "text": "data_raw/alice.txt",
+    "cache_dir": "data/alice",
+    "render_dir": "data/alice_render/inputs",
+    "render_out_hw": 160
+  },
+  "model": {
+    "model_type": "optical_phase_two_stage",
+    "optical_size": 160,
+    "num_optical_layers": 2,
+    "detector_mode": "legacy",
+    "det_number": 15,
+    "det_edge": 1,
+    "det_size": 12,
+    "det_grid": 3,
+    "det_gap": 8,
+    "hidden": 768,
+    "proj_layers": 2,
+    "proj_dropout": 0.1,
+    "electric_mode": "hybrid",
+    "electric_layers": 3,
+    "electric_heads": 6,
+    "electric_hidden": 1024,
+    "electric_dropout": 0.15
+  },
+  "train": {
+    "Tin": 4,
+    "Tout": 4,
+    "k": 18,
+    "limit_n": 400,
+    "cand_k": 10,
+    "epochs": 60,
+    "batch_size": 64,
+    "num_workers": 12,
+    "pin_memory": true,
+    "prefetch_factor": 4,
+    "train_ratio": 0.8,
+    "seed": 42,
+    "lr": 0.0002,
+    "electric_lr_ratio": 0.3,
+    "label_smoothing": 0.08,
+    "patience": 10,
+    "min_epochs": 12,
+    "optical_demo": true
+  },
+  "candidate": {
+    "gpt2_name": "gpt2-medium",
+    "teacher_forcing": false,
+    "use_semantic": true,
+    "semantic_mix_ratio": 0.65,
+    "soft_include_target": true,
+    "soft_include_margin": 1.8,
+    "soft_include_topn": 400,
+    "soft_include_min_freq": 1
+  },
+  "output": {
+    "ckpt": "out/model.pt"
+  }
+}
